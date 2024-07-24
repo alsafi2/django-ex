@@ -1,5 +1,5 @@
-django
-django-debug-toolbar
+django>=1.11,<1.12
+django-debug-toolbar==1.11.1
 gunicorn
 psycopg2
 whitenoise
