@@ -1,4 +1,29 @@
 from django.conf import settings
+from django.urls import include, path, re_path
+from django.contrib import admin
+
+from welcome.views import index, health
+
+urlpatterns = [
+    # Examples:
+    # path('', project.views.home, name='home'),
+    # path('blog/', include('blog.urls')),
+
+    path('', index),
+    path('health/', health),
+    path('admin/', admin.site.urls),
+]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+
+
+'''
+#django 3
+from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 
@@ -19,3 +44,4 @@ if settings.DEBUG:
     urlpatterns = [
         url(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
+'''
